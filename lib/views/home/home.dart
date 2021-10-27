@@ -45,6 +45,11 @@ class _HomeState extends State<Home> {
         title: "Office Work",
         subtitle: ""
     ),
+    Activity(
+        image: "assets/eating",
+        title: "Eating",
+        subtitle: ""
+    ),
   ];
 
   @override
@@ -79,12 +84,13 @@ class _HomeState extends State<Home> {
   }
 
   Widget buildGridView(List<Widget> items) => GridView.count(
+      clipBehavior: Clip.none,
       shrinkWrap: true,
       crossAxisCount: 2,
       crossAxisSpacing: 18,
       mainAxisSpacing: 18,
       children: items,
-      padding: EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 20),
   );
 
   List<Widget> buildCards(List<Activity> items, themeName) {
@@ -100,7 +106,7 @@ class _HomeState extends State<Home> {
             ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
