@@ -1,9 +1,11 @@
+import 'package:bottom_sheet/bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_lighting/bloc/preferences/preferences_bloc.dart';
 import 'package:smart_lighting/themes/themes.dart';
+import 'package:smart_lighting/views/details/details.dart';
 
 class Home extends StatefulWidget {
 
@@ -98,7 +100,19 @@ class _HomeState extends State<Home> {
     List<Widget> cards = [];
 
     for (var item in items) {
-      cards.add(Card(
+      cards.add(GestureDetector(
+          onTap: () {
+            showFlexibleBottomSheet(
+              minHeight: 0,
+              initHeight: 0.5,
+              maxHeight: 1,
+              context: context,
+              builder: (BuildContext context, ScrollController scrollController, double offset) {
+                  return _buildBottomSheet(context, scrollController, offset, item, themeName);
+              },
+              anchors: [0, 0.5, 1],
+            );
+          },child: Card(
         elevation: 12,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
@@ -112,7 +126,10 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: Image.asset(item.image+"_"+themeName+".png", height: 70),
+                child: Hero(
+                  tag: item.hashCode,
+                  child: Image.asset(item.image+"_"+themeName+".png", height: 70)
+                ),
               ),
               const SizedBox(
                 height: 8,
@@ -124,7 +141,7 @@ class _HomeState extends State<Home> {
             ],
           ),
         )
-      ));
+      )));
     }
 
     return cards;
@@ -141,4 +158,76 @@ class Activity {
 
   Activity({required this.title, required this.image, required this.subtitle});
 
+}
+
+
+
+Widget _buildBottomSheet(BuildContext context, ScrollController scrollController, double bottomSheetOffset, Activity activity, String themeName) {
+
+  return SafeArea(
+    child: Material(
+      borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: <Widget>[
+          Positioned(
+              top: -100,
+              left: 0,
+              right: 0,
+              child: Image.asset(activity.image+"_"+themeName+"_uniform.png", height: 190)
+          ),
+          Column(
+            children:  [
+              const SizedBox(
+                height: 80,
+              ),
+              Container(
+                padding: const EdgeInsets.only(left:15, right: 15, bottom: 15),
+                width: double.infinity,
+                child: Text(
+                  activity.title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 150,
+                child: Expanded(
+                    child: SingleChildScrollView(
+                      child: Padding(
+                          padding: EdgeInsets.only(left: 15, right: 15),
+                          child: Text(
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales lacus tellus, ac ornare mi tempus ut. Mauris et nunc condimentum, consequat massa vel, tristique nulla. Morbi sit amet egestas est. Integer tortor sapien, fringilla sit amet felis sit amet, imperdiet faucibus tellus. Praesent sodales, tortor non interdum dictum, mi eros varius nisi, vel suscipit dolor tortor vel turpis. Suspendisse sollicitudin congue arcu, sit amet interdum velit fringilla id. Suspendisse sit amet mauris eu lectus vestibulum tempor.",
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          )
+                      ),
+                    )
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                  alignment: Alignment.bottomRight,
+                  padding: const EdgeInsets.only(right: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+                    )
+                  ),
+                  onPressed: () => {
+
+                  },
+                  child: const Text("Set as Activity")
+              ))
+            ]),
+      ]))),
+    );
 }
