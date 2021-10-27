@@ -39,6 +39,14 @@ class ThemeHelper {
     titleColor: Colors.white,
     bottomNavigationBarColor: const Color(0xFF212121),
     themeData: ThemeData(
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            primary: const Color(0xFF1976D2),
+            textStyle: const TextStyle(
+              color: Colors.white
+            )
+        ),
+      ),
       bottomAppBarTheme: const BottomAppBarTheme(elevation: 0),
       bottomAppBarColor: const Color(0xFF212121),
       scaffoldBackgroundColor: const Color(0xFF212121),
@@ -63,6 +71,12 @@ class ThemeHelper {
       tabBarContentsColor: const Color(0xFF1976D2),
       bottomNavigationBarColor: Colors.white,
       themeData: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              primary: const Color(0xFF1976D2),
+              onPrimary: Colors.white
+          ),
+        ),
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
           surface: Colors.white,
@@ -72,7 +86,7 @@ class ThemeHelper {
           primaryVariant: Colors.grey,
           secondary: Colors.grey,
           secondaryVariant: Colors.grey,
-          onSecondary: Colors.grey,
+          onSecondary: Colors.white,
           background: Colors.grey,
           onBackground: Colors.grey,
           error: Colors.grey,
