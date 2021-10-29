@@ -12,7 +12,7 @@ Home:
 
 Detail:
 <br><br>
-![screnshot_app](md-assets/select_time.jpg)
-<br><br>
 ![screnshot_app](md-assets/select_time_disabled.jpg)
+<br><br>
+![screnshot_app](md-assets/select_time.jpg)
 <br><br>
