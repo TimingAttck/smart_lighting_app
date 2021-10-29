@@ -12,10 +12,18 @@ class ThemeWrapper {
   Color main;
   Color titleColor;
   Color bottomNavigationBarColor;
+  Color timeSelectBorder;
+  Color activetimeSelectBorder;
+  Color activetimeSelectBackground;
+  TextStyle activeTimeSelectTextStyle;
   SystemUiOverlayStyle systemOverlay;
 
   ThemeWrapper(
-      { required this.main,
+      { required this.activeTimeSelectTextStyle,
+        required this.timeSelectBorder,
+        required this.activetimeSelectBorder,
+        required this.activetimeSelectBackground,
+        required this.main,
         required this.themeIdentifier,
         required this.themeData,
         required this.systemOverlay,
@@ -31,6 +39,13 @@ class ThemeWrapper {
 ///
 class ThemeHelper {
   static final DarkTheme = ThemeWrapper(
+    timeSelectBorder: Colors.white,
+    activetimeSelectBorder: const Color(0xFF1976D2),
+    activetimeSelectBackground: const Color(0xFF1976D2),
+    activeTimeSelectTextStyle: const TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.bold
+    ),
     accentTextColor: Colors.white,
     themeIdentifier: Themes.dark,
     tabBarContentsColor: Colors.white,
@@ -63,6 +78,13 @@ class ThemeHelper {
   );
 
   static final LightTheme = ThemeWrapper(
+      timeSelectBorder: const Color(0xFF212121),
+      activetimeSelectBorder: const Color(0xFF1976D2),
+      activetimeSelectBackground: const Color(0xFF1976D2),
+      activeTimeSelectTextStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold
+      ),
       accentTextColor: Colors.white,
       themeIdentifier: Themes.light,
       titleColor: const Color(0xFF1976D2),
