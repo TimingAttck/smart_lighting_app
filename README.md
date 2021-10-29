@@ -2,14 +2,12 @@
 
 Home:
 <br><br>
-![screnshot_app](md-assets/Screenshot_20211027-231637.jpg)
-<br><br>
-![screnshot_app](md-assets/Screenshot_20211027-231631.jpg)
+![screnshot_app](md-assets/main)
 <br><br>
 
 Detail:
 <br><br>
-![screnshot_app](md-assets/Screenshot_20211027-231645.jpg)
+![screnshot_app](md-assets/select_time)
 <br><br>
-![screnshot_app](md-assets/Screenshot_20211027-231653.jpg)
+![screnshot_app](md-assets/select_time_disabled)
 <br><br>
